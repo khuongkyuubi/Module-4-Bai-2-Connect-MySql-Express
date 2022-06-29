@@ -21,8 +21,8 @@ class EmployeeModel {
 
     async createEmployee(employee) {
         try {
-            const sql = `INSERT INTO ??(??, ??) VALUES (?,?);`;
-            const createEmployeeSql = mysql.format(sql, ["employees", "name", "department", employee["name"], employee["department"]]);
+            const sql = `INSERT INTO ??(??, ??, ??) VALUES (?,?,?);`;
+            const createEmployeeSql = mysql.format(sql, ["employees", "name", "department","imgPath", employee["name"], employee["department"], employee["imgPath"]]);
             await employeeDB.query(createEmployeeSql);
         } catch (err) {
             console.log(err.message)

@@ -19,7 +19,7 @@ app.use(express.json()) // parse application/json
 app.use(urlencoded({extended: true})) // parse application/x-www-form-urlencoded
 
 // setting static file
-app.use(express.static(path.join(__dirname, "public")));
+app.use("/public",express.static( "public"));
 
 //seting view engine
 app.use(expressLayouts);

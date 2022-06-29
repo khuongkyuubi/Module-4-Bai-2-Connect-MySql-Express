@@ -1,5 +1,8 @@
 const data = require("../models/employee.model")
-const _ = require("lodash")
+const _ = require("lodash");
+const fs = require("fs");
+const path = require("path");
+
 
 class EmployeeController {
     constructor() {
@@ -7,6 +10,7 @@ class EmployeeController {
 
     async renderListEmployees(req, res, next) {
         // console.log(await data.getEmployees())
+
         let employeesList = (await data.getEmployees())
         res.render("employee/list", {employeesList, tittle: "List employees"})
         next();
@@ -18,10 +22,20 @@ class EmployeeController {
     }
 
     async createEmployee(req, res, next) {
-        let employee = req.body;
+        const employee = req.body;
+        const file = req.file
+        if (!file) {
+            const error = new Error('Error occur')
+            error.httpStatusCode = 400
+            return next(error)
+        }
+        console.log(file)
+        // res.json("hello")
+        employee.imgPath = "/" + file.path
         await data.createEmployee(employee)
         res.redirect("list")
         next();
+
 
     }
 
@@ -55,9 +69,6 @@ class EmployeeController {
 
 
     }
-
-
-
 
 
 }

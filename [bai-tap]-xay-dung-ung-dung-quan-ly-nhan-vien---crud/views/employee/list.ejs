@@ -3,6 +3,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">ID</th>
+        <th scope="col">Avatar</th>
         <th scope="col">Name</th>
         <th scope="col">Department</th>
         <th scope="col">Action</th>
@@ -14,9 +15,10 @@
 
         <tr>
             <th scope="row"><%= index+1 %></th>
+            <td ><img style="height: 75px; width: 75px; border-radius: 50%; object-fit: cover;" src="<%= employee.imgPath || "/public/uploads/no-avatar.png" %>" alt=""></td>
             <td><%= employee.id %></td>
             <td><%= employee.name %></td>
-            <td><%= employee.department %></td>
+            <td><%= employee["department"] %></td>
             <td><a href="delete?index=<%= index %>&id=<%= employee.id %>"><button class="btn btn-danger">Delete</button></a></td>
         </tr>
 
