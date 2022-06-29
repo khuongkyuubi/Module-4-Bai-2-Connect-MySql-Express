@@ -54,6 +54,31 @@ class EmployeeModel {
 
     }
 
+    async getEmployeeByPage(perPage, page) {
+        try {
+
+            const sql = `SELECT * FROM ??
+                         LIMIT ?, ?;   
+                        `
+            const getEmployeeSql = mysql.format(sql, ["employees", page, perPage]);
+            const data = await employeeDB.query(getEmployeeSql);
+            return JSON.parse(JSON.stringify(data));
+
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    async getTotalEmployees() {
+        const sql = `SELECT COUNT(*) AS ?? FROM ??;`;
+        const countEmployeeSql = mysql.format(sql, ["total","employees"]);
+
+        return await employeeDB.query(countEmployeeSql)
+
+
+    }
+
+
 
 }
 

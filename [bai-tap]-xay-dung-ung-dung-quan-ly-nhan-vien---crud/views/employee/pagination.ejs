@@ -1,0 +1,50 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% employeesList.forEach((employee, index) => { %>
+
+        <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= employee.id %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.department %></td>
+            <td><a href="delete?index=<%= index %>&id=<%= employee.id %>">
+                    <button class="btn btn-danger">Delete</button>
+                </a></td>
+        </tr>
+
+    <% }) %>
+    </tbody>
+</table>
+
+
+<div class="mt-4">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <%
+            let prevPage = "#";
+            if (page > 1) {
+                prevPage = page - 1;
+            } %>
+            <li class="page-item"><a class="page-link" href="<%= prevPage %>">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="<%= prevPage %>"><%= prevPage %></a></li>
+            <li class="page-item active"><a class="page-link" href="<%= page %>"><b><%= page %></b></a></li>
+            <%
+            var nextPage = "#";
+            if (page < maxPage) {
+                nextPage = parseInt(page) + 1;
+            } %>
+            <li class="page-item"><a class="page-link" href="<%= nextPage %>"><%= nextPage %></a></li>
+            <li class="page-item"><a class="page-link" href="<%= nextPage %>">Next</a></li>
+        </ul>
+    </nav>
+</div>
