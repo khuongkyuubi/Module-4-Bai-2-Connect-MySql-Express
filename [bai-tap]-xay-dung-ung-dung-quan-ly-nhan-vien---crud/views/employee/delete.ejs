@@ -1,0 +1,28 @@
+<div class="alert alert-danger mt-3" role="alert">
+   You sure will delete employee <%= employee.name%>!
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"><%= index+1 %></th>
+            <td><%= employee.id %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.department %></td>
+            <td><form action="delete/<%= employee.id %>?_method=DELETE" method="POST">
+<!--                    <input type="hidden" name="_method" value="DELETE">-->
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

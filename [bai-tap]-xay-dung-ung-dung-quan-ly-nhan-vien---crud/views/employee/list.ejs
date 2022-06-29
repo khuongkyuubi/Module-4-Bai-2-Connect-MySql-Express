@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% employeesList.forEach((employee, index) => { %>
+
+        <tr>
+            <th scope="row"><%= index+1 %></th>
+            <td><%= employee.id %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.department %></td>
+            <td><a href="delete?index=<%= index %>&id=<%= employee.id %>"><button class="btn btn-danger">Delete</button></a></td>
+        </tr>
+
+
+    <% })%>
+    </tbody>
+</table>
